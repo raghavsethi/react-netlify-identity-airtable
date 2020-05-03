@@ -62,7 +62,7 @@ const AuthButton = withRouter(
   ({ history }) =>
     netlifyAuth.isAuthenticated() ? (
       <p>
-        Welcome!{" "}
+        {`Welcome ${netlifyIdentity.currentUser().email}! `}
         <button
           onClick={() => {
             netlifyAuth.signout(() => history.push("/"));

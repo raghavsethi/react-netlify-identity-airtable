@@ -1,0 +1,9 @@
+[build]
+  command = "yarn build"
+  publish = "build"
+  functions = "src/functions/"
+
+[template.environment]
+  AIRTABLE_API_KEY = "Your Airtable API key here (https://airtable.com/account)"
+  AIRTABLE_BASE_ID = "Your Airtable base ID, eg: appZ6PIv6FNBGtFeB"
+  AIRTABLE_PRIMARY_TABLE_NAME = "The table name that stores profile information - must have a field called 'Email'"
