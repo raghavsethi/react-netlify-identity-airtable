@@ -1,16 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and uses [Netlify Identity](https://www.netlify.com/docs/identity/) for authentication.
+Netlify identity with Airtable
+==============================
 
-This shows an example of how to use the `netlify-identity-widget` with React.
+![Airtable](readme_image.png)
 
-The source code is at https://github.com/netlify/netlify-identity-widget/tree/master/example
+This is an example project that shows how to set up a simple authenticated single page app where user information is
+stored in Airtable. It uses the [Netlify Identity Widget](https://github.com/netlify/netlify-identity-widget) along with
+serverless functions to control user registration and login.
 
-and it is deployed at: https://netlify-identity-widget-react-example.netlify.com
+In this example, a single table in Airtable stores user profile information, including email addresses. Only users that
+exist in this table are allowed to register or log in. The Netlify identity user object is populated with the user
+profile information from Airtable on login and validation, and is therefore easily accessible from the client side
+Javascript.
 
-For more info on the `netlify-identity-widget`, [find the repo here.](https://github.com/netlify/netlify-identity-widget/)
+Usage
+-----
+
+The example is configured by setting the following environment variables:
+
+* `AIRTABLE_API_KEY` - Airtable API key here (https://airtable.com/account)
+* `AIRTABLE_BASE_ID` - Airtable base ID, eg: appZ6PIv6FNBGtFeB
+* `AIRTABLE_PRIMARY_TABLE_NAME` - The table name that stores profile information. The table must have a field called
+'Email'
+* `AIRTABLE_PRIMARY_TABLE_VIEW_NAME` (optional) - To restrict the set of allowed users, you can specify a view. Only 
+user records visible in the view will be allowed to register or log in.
+
+### Deploying
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/raghavsethi/react-netlify-identity-airtable)
 
-After the initial deploy is complete, enable Netlify Identity and then trigger a new deploy.
----
+After the initial deploy is complete, turn on Netlify Identity in app settings and trigger another deploy.
 
-Note: if you are developing with netlify-identity-widget locally you will be prompted for a deployed Netlify Identity site (as we mention in [the Localhost section of the main README](https://github.com/netlify/netlify-identity-widget#localhost)). Sometimes this causes issues with email verification or confirmation and you may need to reset the site. to clear the locally stored Netlify Identity site you previously entered, execute `localStorage.removeItem('netlifySiteURL');` in your window.
+### Developing locally
+
+```shell script
+yarn install
+yarn start
+```
+
+You will be prompted for a deployed Netlify site with Identity enabled when deploying locally.
+
+To iterate on functions locally, you may need to use [Netlify Dev](https://docs.netlify.com/cli/get-started/#netlify-dev).
+
+This repository is based on the React [example](https://github.com/netlify/netlify-identity-widget/tree/master/example/react)
+from the Netlify Identity Widget.
