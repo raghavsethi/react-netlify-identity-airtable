@@ -8,9 +8,9 @@ stored in Airtable. It uses the [Netlify Identity Widget](https://github.com/net
 serverless functions to control user registration and login.
 
 In this example, a single table in Airtable stores user profile information, including email addresses. Only users that
-exist in this table are allowed to register or log in. The Netlify identity user object is populated with the user
-profile information from Airtable on login and validation, and is therefore easily accessible from the client side
-Javascript.
+exist in this table are allowed to register or log in. Users can only see their own profile information. The Netlify 
+identity user object is populated with the user profile information from Airtable on login and validation, and is
+therefore easily accessible from the client side Javascript.
 
 Usage
 -----
@@ -37,9 +37,8 @@ yarn install
 yarn start
 ```
 
-You will be prompted for a deployed Netlify site with Identity enabled when deploying locally.
-
-To iterate on functions locally, you may need to use [Netlify Dev](https://docs.netlify.com/cli/get-started/#netlify-dev).
+You will be prompted for a deployed Netlify site with Identity enabled when running the development server. To iterate 
+on functions locally, you may need to use [Netlify Dev](https://docs.netlify.com/cli/get-started/#netlify-dev).
 
 This repository is based on the React [example](https://github.com/netlify/netlify-identity-widget/tree/master/example/react)
 from the Netlify Identity Widget.
